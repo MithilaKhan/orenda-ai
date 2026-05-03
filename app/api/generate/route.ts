@@ -25,8 +25,8 @@ export async function POST(req: Request) {
     return Response.json({
       result: response.choices[0].message.content,
     });
-  } catch (error) { 
+  } catch (error) {
     console.error("Error generating content:", error);
-    return Response.json({ error: error?.message || "Something went wrong" }, { status: 500 });
+    return Response.json({ error: (error as Error)?.message || "Something went wrong" }, { status: 500 });
   }
 }
