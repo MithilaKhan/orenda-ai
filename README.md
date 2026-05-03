@@ -57,7 +57,7 @@ npm run dev
 # To access on your local network, run: npm run dev -- -H 0.0.0.0
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [https://orenda-ai.vercel.app/](https://orenda-ai.vercel.app/) with your browser to see the result.
 
 ## 🎨 Design Philosophy
 
