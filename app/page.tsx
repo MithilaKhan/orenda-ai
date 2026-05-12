@@ -72,7 +72,9 @@ export default function Home() {
       [chatId as string]: [...(prev[chatId as string] || []), userMessage]
     }));
 
-    setLoading(true);
+    setLoading(true); 
+
+    
 
     try {
       const res = await fetch("/api/generate", {
