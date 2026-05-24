@@ -26,7 +26,8 @@ export function ChatInputBox({ prompt, setPrompt, onGenerate, loading }: ChatInp
       }
     }
   };
-
+ 
+  // sdfa
   return (
     <div className="sticky bottom-0 left-0 right-0 p-4 md:p-6 bg-linear-to-t from-background via-background to-transparent pt-10">
       <div className="max-w-4xl mx-auto relative group flex items-center gap-2 bg-white border border-border-color rounded-3xl p-2 transition-shadow duration-300 focus-within:shadow-[0_4px_5px_rgba(163,255,18,0.15)] focus-within:border-[rgba(113,175,14,0.5)]">
