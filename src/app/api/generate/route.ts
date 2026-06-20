@@ -1,6 +1,8 @@
 import OpenAI from "openai";
 
 const client = new OpenAI({
+  // apiKey: process.env.GEMINI_API_KEY!,
+  // baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/", 
   apiKey: process.env.OPENAI_API_KEY!,
 });
 
@@ -13,6 +15,7 @@ export async function POST(req: Request) {
     }
 
     const response = await client.chat.completions.create({
+      // model: "gemini-1.5-flash",  
       model: "gpt-4o-mini",
       messages: [
         {
@@ -26,9 +29,11 @@ export async function POST(req: Request) {
       ],
     });
 
+
     return Response.json({
       result: response.choices[0].message.content,
     });
+
   } catch (error) {
     console.error("Error generating content:", error);
     return Response.json(

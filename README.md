@@ -8,10 +8,11 @@ Built with modern web technologies, Orenda AI offers a seamless ChatGPT-style in
 
 - **Premium UI/UX:** A highly polished, nature-themed design system emphasizing calm, focus, and creativity.
 - **ChatGPT-Style Layout:** Familiar interface featuring a fixed collapsible sidebar for chat history and a sticky input area.
-- **Real-Time Generation:** Seamless connection to the OpenAI API for fast and intelligent content creation.
+- **Real-Time Generation:** Seamless connection to the OpenAI API (model `gpt-4o-mini`) for fast and intelligent content creation.
 - **Session Management:** Create new chats, switch between recent conversations, and manage history smoothly.
+- **Local Persistence:** Chats and history are stored locally in the browser's `localStorage` so they persist across page refreshes.
 - **Fully Responsive:** Optimized for both desktop and mobile devices, ensuring a premium experience on any screen size.
-- **Interactive Elements:** Smooth transitions, hover effects, and beautifully styled message bubbles.
+- **Interactive Elements:** Smooth transitions, hover effects, and custom-styled message bubbles with built-in lightweight markdown rendering.
 
 ## 🛠️ Tech Stack
 
@@ -21,27 +22,35 @@ Built with modern web technologies, Orenda AI offers a seamless ChatGPT-style in
 - **AI Integration:** [OpenAI SDK](https://platform.openai.com/docs/api-reference)
 - **Icons:** [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
 - **Language:** TypeScript
+- **Package Manager:** [Yarn 4](https://yarnpkg.com/)
 
 ## 📂 Project Structure
 
 ```text
-├── app/
-│   ├── api/generate/     # Backend API route handling OpenAI requests
-│   ├── layout.tsx        # Global application layout and metadata
-│   ├── page.tsx          # Main application state and logic
-│   └── globals.css       # Global styles and Tailwind configuration
-├── components/
-│   ├── chat/             # Chat UI components (Input, Bubbles, Empty State, Window)
-│   └── layout/           # Structural components (Sidebar, Main Layout)
-└── package.json          # Project dependencies and scripts
+├── src/
+│   ├── app/
+│   │   ├── api/generate/     # Backend API route handling OpenAI requests
+│   │   ├── layout.tsx        # Global application layout and metadata
+│   │   ├── page.tsx          # Main application page orchestrator
+│   │   ├── loading.tsx       # Custom organic loading screen
+│   │   └── not-found.tsx     # Custom organic 404 page
+│   ├── components/
+│   │   ├── layout/           # Structural layouts (Sidebar, main shell)
+│   │   ├── chat/             # Composites (ChatWindow)
+│   │   └── ui/               # Primitives (Input, message bubbles, buttons)
+│   ├── hooks/
+│   │   └── useChat.ts        # Custom react state controller with localStorage sync
+│   └── styles/
+│       └── globals.css       # Global styles and Tailwind configuration
+└── package.json              # Project dependencies and script runner
 ```
 
 ## 🚀 Getting Started
 
-First, clone the repository and install the dependencies:
+First, clone the repository and install the dependencies using Yarn:
 
 ```bash
-npm install
+yarn install
 ```
 
 Set up your environment variables by creating a `.env.local` file in the root directory:
@@ -53,8 +62,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 Run the development server:
 
 ```bash
-npm run dev
-# To access on your local network, run: npm run dev -- -H 0.0.0.0
+yarn dev
 ```
 
 Open [https://orenda-ai.vercel.app/](https://orenda-ai.vercel.app/) with your browser to see the result.
