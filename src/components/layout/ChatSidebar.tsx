@@ -1,12 +1,7 @@
 import { Plus } from "lucide-react";
-import { ChatHistoryItem } from "../chat/ChatHistoryItem";
+import { ChatHistoryItem } from "../ui/ChatHistoryItem";
 import { SiOverleaf } from "react-icons/si";
-
-export type ChatHistory = {
-  id: string;
-  title: string;
-  date: string;
-};
+import { ChatHistory } from "../../hooks/useChat";
 
 interface ChatSidebarProps {
   history: ChatHistory[];
@@ -16,17 +11,22 @@ interface ChatSidebarProps {
   onDeleteChat: (id: string, e: React.MouseEvent) => void;
 }
 
-export function ChatSidebar({ history, activeChatId, onNewChat, onSelectChat, onDeleteChat }: ChatSidebarProps) {
+export function ChatSidebar({
+  history,
+  activeChatId,
+  onNewChat,
+  onSelectChat,
+  onDeleteChat,
+}: ChatSidebarProps) {
   return (
-    <div className="w-72 bg-sidebar-bg border-r border-border-color h-full flex-col transition-all duration-300 hidden md:flex shrink-0">
-      <div className="flex items-center  gap-2 p-4 mt-5 mb-2">
-        <div className="w-12 h-12 bg-linear-to-br from-primary to-[#185A5B] rounded-2xl flex items-center justify-center  shadow-lg shadow-[rgba(15,61,62,0.2)]">
+    <div className="w-72 bg-sidebar-bg border-r border-border-color h-full flex-col hidden md:flex shrink-0">
+      <div className="flex items-center gap-2 p-4 mt-5 mb-2">
+        <div className="w-12 h-12 bg-linear-to-br from-primary to-[#185A5B] rounded-2xl flex items-center justify-center shadow-lg shadow-[rgba(15,61,62,0.2)]">
           <SiOverleaf className="w-6 h-6 text-accent" />
         </div>
-        <h2 className="text-xl font-bold text-primary/90  text-center">
-          Orenda AI
-        </h2>
+        <h2 className="text-xl font-bold text-primary/90">Orenda AI</h2>
       </div>
+      
       <div className="p-4 pt-0">
         <button
           onClick={onNewChat}
@@ -40,14 +40,9 @@ export function ChatSidebar({ history, activeChatId, onNewChat, onSelectChat, on
       </div>
 
       <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1">
-        <div className="px-2 pb-2 text-xs font-bold text-primary/80 uppercase tracking-wider">
-          Recent
-        </div>
-
+        <div className="px-2 pb-2 text-xs font-bold text-primary/80 uppercase tracking-wider">Recent</div>
         {history.length === 0 ? (
-          <div className="px-3 py-4 text-sm text-primary/50 italic text-center">
-            No previous chats
-          </div>
+          <div className="px-3 py-4 text-sm text-primary/50 italic text-center">No previous chats</div>
         ) : (
           history.map((chat) => (
             <ChatHistoryItem

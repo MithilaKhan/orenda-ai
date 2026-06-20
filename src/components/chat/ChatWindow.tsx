@@ -1,13 +1,8 @@
 import { useEffect, useRef } from "react";
-import { UserMessageBubble } from "./UserMessageBubble";
-import { AIMessageBubble } from "./AIMessageBubble";
-import { EmptyStateComponent } from "./EmptyStateComponent";
-
-export type Message = {
-  id: string;
-  role: "user" | "ai";
-  content: string;
-};
+import { UserMessageBubble } from "../ui/UserMessageBubble";
+import { AIMessageBubble } from "../ui/AIMessageBubble";
+import { EmptyState } from "../ui/EmptyState";
+import { Message } from "../../hooks/useChat";
 
 interface ChatWindowProps {
   messages: Message[];
@@ -26,7 +21,7 @@ export function ChatWindow({ messages, loading, onSuggestionClick }: ChatWindowP
     <div className="flex-1 overflow-y-auto px-4 md:px-8 w-full pt-8">
       <div className="max-w-4xl mx-auto w-full h-full flex flex-col">
         {messages.length === 0 && !loading ? (
-          <EmptyStateComponent onSuggestionClick={onSuggestionClick} />
+          <EmptyState onSuggestionClick={onSuggestionClick} />
         ) : (
           <div className="flex flex-col pb-6">
             {messages.map((msg) =>

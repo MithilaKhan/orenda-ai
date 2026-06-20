@@ -13,6 +13,17 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-console": ["warn", { "allow": ["warn", "error"] }],
+      "react/self-closing-comp": "error",
+      "eqeqeq": ["error", "always"]
+    }
+  }
 ]);
 
 export default eslintConfig;

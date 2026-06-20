@@ -1,11 +1,10 @@
-import { Leaf } from "lucide-react";
-import { GiLindenLeaf } from "react-icons/gi";
 import { SiOverleaf } from "react-icons/si";
-interface EmptyStateComponentProps {
+
+interface EmptyStateProps {
   onSuggestionClick: (suggestion: string) => void;
 }
 
-export function EmptyStateComponent({ onSuggestionClick }: EmptyStateComponentProps) {
+export function EmptyState({ onSuggestionClick }: EmptyStateProps) {
   const suggestions = [
     "Design a sustainable eco-village layout",
     "Explain biomimicry in modern architecture",

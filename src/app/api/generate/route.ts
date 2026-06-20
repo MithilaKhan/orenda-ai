@@ -8,12 +8,16 @@ export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
 
+    if (!prompt) {
+      return Response.json({ error: "Prompt is required" }, { status: 400 });
+    }
+
     const response = await client.chat.completions.create({
-      model: "gpt-5.4-mini",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content: "You are a helpful content writing assistant.",
+          content: "You are a helpful nature-inspired content writing assistant named Orenda AI. You specialize in biomimicry, ecology, sustainability, and regenerative design.",
         },
         {
           role: "user",
@@ -27,6 +31,9 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error("Error generating content:", error);
-    return Response.json({ error: (error as Error)?.message || "Something went wrong" }, { status: 500 });
+    return Response.json(
+      { error: (error as Error)?.message || "Something went wrong" },
+      { status: 500 }
+    );
   }
 }

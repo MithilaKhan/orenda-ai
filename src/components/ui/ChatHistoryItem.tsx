@@ -1,5 +1,5 @@
 import { MessageSquare } from "lucide-react";
-import { DeleteChatButton } from "../ui/DeleteChatButton";
+import { DeleteChatButton } from "./DeleteChatButton";
 
 interface ChatHistoryItemProps {
   title: string;
